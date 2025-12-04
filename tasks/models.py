@@ -20,6 +20,8 @@ class Task(models.Model):
     status = models.CharField(choices=STATUS_CHOICES, max_length=20, default='todo', verbose_name="Task Status")
     priority= models.CharField(choices=PRIORITY_CHOICES, max_length=20, default='low', verbose_name="Task Priority")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    create_ad=models.DateTimeField(auto_now_add= True)
+    update_ad=models.DateTimeField(auto_now= True)
 
     def __str__(self):
         return self.title
@@ -30,3 +32,4 @@ class Comennt(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     task=models.ForeignKey(Task, on_delete=models.CASCADE)
     media=models.FileField(upload_to='comennt_media', blank=True, null=True)
+    create_ad=models.DateTimeField(auto_now_add= True)
